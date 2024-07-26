@@ -4,7 +4,11 @@ terraform {
       source  = "hashicorp/google"
       version = "4.84.0"
     }
-  }
+    docker = {
+        source  = "kreuzwerker/docker"
+        version = "2.20.0" # Pastikan versi ini sesuai dengan yang Anda butuhkan
+        }
+    }
 }
 
 provider "google" {
