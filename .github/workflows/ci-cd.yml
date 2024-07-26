@@ -31,6 +31,12 @@ jobs:
     runs-on: ubuntu-22.04
     needs: build
     steps:
+     - name: Check workspace directory
+      run: ls -la
+
+    - name: Check hostname
+      run: hostnamectl
+      
     - name: Deploy stack to swarm
       uses: kitconcept/docker-stack-deploy@v1.0.1
       with:
