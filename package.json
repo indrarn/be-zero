@@ -1,0 +1,17 @@
+{
+  "name": "be-zero",
+  "version": "1.0.0",
+  "description": "be",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "server": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1"
+  }
+}
