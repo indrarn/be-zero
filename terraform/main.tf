@@ -31,8 +31,8 @@ resource "google_compute_instance" "default" {
   }
 
   network_interface {
-    network    = var.network
-    subnetwork = var.subnetwork
+    network    = "default"
+    subnetwork = "default"
 
     access_config {}
   }
@@ -73,9 +73,4 @@ resource "docker_service" "be_zero" {
       image = "indrarn/be-zero:${var.image_tag}"
     }
   }
-}
-
-variable "image_tag" {
-  description = "Tag for the Docker image"
-  type        = string
 }
