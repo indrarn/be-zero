@@ -37,3 +37,8 @@ variable "subnetwork" {
 variable "image_tag" {
   type = string
 }
+
+variable "ssh_private_key" {
+  description = "Private key for SSH connection"
+  type        = string
+}

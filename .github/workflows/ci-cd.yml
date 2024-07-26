@@ -59,6 +59,7 @@ jobs:
         TF_VAR_network: "default"
         TF_VAR_subnetwork: "default"
         TF_VAR_image_tag: ${{ github.sha }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Get Public IP
       run: terraform output -raw instance_public_ip > terraform/public_ip.txt

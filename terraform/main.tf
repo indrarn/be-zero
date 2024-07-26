@@ -49,7 +49,7 @@ resource "google_compute_instance" "default" {
     connection {
       type        = "ssh"
       user        = "indrarn"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = var.ssh_private_key
       host        = self.network_interface[0].access_config[0].nat_ip
     }
   }
