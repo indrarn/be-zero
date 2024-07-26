@@ -22,7 +22,7 @@ resource "google_compute_instance" "default" {
   name         = var.name_instance
   machine_type = var.spec
 
-  tags = var.network_tags
+  tags = ["http-server","https-server","allow-ssh"]
 
   boot_disk {
     initialize_params {
