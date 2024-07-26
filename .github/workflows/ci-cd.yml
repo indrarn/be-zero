@@ -46,4 +46,5 @@ jobs:
           remote_host: ${{ secrets.SWARM_HOST }}
           remote_user: ${{ secrets.SWARM_USER }}
           remote_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          stack_file: "docker-compose.yaml"
+          # stack_file: "docker-compose.yaml"
+          stack_file: "stacks/plone.yml"
