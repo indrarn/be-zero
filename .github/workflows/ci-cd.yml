@@ -58,6 +58,7 @@ jobs:
         TF_VAR_image: "ubuntu-os-cloud/ubuntu-2204-lts"
         TF_VAR_network: "default"
         TF_VAR_subnetwork: "default"
+        TF_VAR_image_tag: ${{ github.sha }}
 
     - name: Get Public IP
       run: terraform output -raw instance_public_ip > terraform/public_ip.txt
