@@ -27,7 +27,7 @@ jobs:
     - name: Push Docker image
       run: docker push indrarn/be-zero:${{ github.sha }}
 
-   deploy:
+  deploy:
     runs-on: ubuntu-22.04
     needs: build
     steps:
