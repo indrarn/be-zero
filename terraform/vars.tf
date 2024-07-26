@@ -22,10 +22,6 @@ variable "spec" {
   type = string
 }
 
-variable "network_tags" {
-  type = list(string)
-}
-
 variable "image" {
   type = string
 }
@@ -35,5 +31,9 @@ variable "network" {
 }
 
 variable "subnetwork" {
+  type = string
+}
+
+variable "image_tag" {
   type = string
 }
