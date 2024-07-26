@@ -27,9 +27,7 @@ jobs:
     - name: Push Docker image
       run: docker push indrarn/be-zero:${{ github.sha }}
 
-#####
-
-deploy:
+  deploy:
     runs-on: ubuntu-22.04
     needs: build
 
@@ -48,25 +46,24 @@ deploy:
     - name: Terraform Apply
       run: terraform apply -auto-approve
       working-directory: ./terraform
+      env:
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
+        TF_VAR_region: ${{ secrets.GCP_REGION }}
+        TF_VAR_zone: ${{ secrets.GCP_ZONE }}
+        TF_VAR_credentials: ${{ secrets.GOOGLE_CREDENTIALS_PATH }}
+        TF_VAR_name_instance: "docker-swarm"
+        TF_VAR_spec: "e2-standard-4"
+        TF_VAR_network_tags: "docker-swarm"
+        TF_VAR_image: "ubuntu-os-cloud/ubuntu-2204-lts"
+        TF_VAR_network: "default"
+        TF_VAR_subnetwork: "default"
 
     - name: Get Public IP
-      run: echo $(terraform output -raw instance_public_ip) > public_ip.txt
+      run: terraform output -raw instance_public_ip > terraform/public_ip.txt
       working-directory: ./terraform
 
     - name: Use Public IP
       run: |
         PUBLIC_IP=$(cat terraform/public_ip.txt)
         echo "Public IP is $PUBLIC_IP"
-
-    env:
-      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-      TF_VAR_project_id: ${{ secrets.GCP_PROJECT_ID }}
-      TF_VAR_region: ${{ secrets.GCP_REGION }}
-      TF_VAR_zone: ${{ secrets.GCP_ZONE }}
-      TF_VAR_credentials: ${{ secrets.GOOGLE_CREDENTIALS_PATH }}
-      TF_VAR_name_instance: "docker-swarm"
-      TF_VAR_spec: "e2-standard-4"
-      TF_VAR_network_tags: "docker-swarm"
-      TF_VAR_image: "ubuntu-os-cloud/ubuntu-2204-lts"
-      TF_VAR_network: "default"
-      TF_VAR_subnetwork: "default"
