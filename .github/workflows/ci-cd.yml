@@ -18,12 +18,6 @@ jobs:
       with:
         node-version: '22.x'
 
-    - name: install dependencies
-      run: npm install
-
-    - name: build application
-      run: npm run build
-
     - name: Log in to DockerHub
       uses: docker/login-action@v2
       with:
