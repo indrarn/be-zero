@@ -38,7 +38,6 @@ jobs:
       with:
         remote_docker_host: root@34.128.107.69
         ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
         deployment_mode: docker-swarm
         copy_stack_file: true
         deploy_path: /root
