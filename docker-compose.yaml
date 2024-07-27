@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  zero-be:
+    image: "indrarn/be-zero:${IMAGE_TAG}"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 200M
+    ports:
+      - target: 3001
+        published: 3001
+        protocol: tcp
+        mode: ingress
+    networks:
+      - internal-apps
+
+networks:
+  internal-apps:
+    external: true
