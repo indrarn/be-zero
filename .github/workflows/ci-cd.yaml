@@ -33,15 +33,15 @@ jobs:
     needs: build
 
     steps:
+    - name: Checkout codebase
+      uses: actions/checkout@v2
+
     - name: Deploy to Docker swarm
       uses: wshihadeh/docker-deployment-action@v1
       with:
-        remote_docker_host: root@34.128.107.69
-        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-        deployment_mode: docker-swarm
-        copy_stack_file: true
-        deploy_path: /root
-        stack_file_name: docker-compose.yaml
-        keep_files: 5
-        args: be-zero
+        remote_host: 34.128.107.69
+        remote_user: root
+        remote_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        stack_file: "docker-compose.yaml"
+        stack_name: "be-zero"
 
