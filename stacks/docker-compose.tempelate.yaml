@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   zero-be:
-    image: "indrarn/be-zero:${{ github.sha }}"
+    image: "indrarn/be-zero:${IMAGE_TAG}"
     deploy:
       replicas: 1
       restart_policy:
