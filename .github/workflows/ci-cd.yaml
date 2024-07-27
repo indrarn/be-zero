@@ -45,6 +45,7 @@ jobs:
         remote_host: 34.128.107.69
         remote_user: root
         remote_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        remote_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
         stack_file: "docker-compose.yaml"
         stack_name: "be-zero"
 
