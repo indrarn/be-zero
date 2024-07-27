@@ -39,11 +39,11 @@ jobs:
     - name: convert tag
       run: |
         IMAGE_TAG=${{ github.sha }}
-        sed "s/\${IMAGE_TAG}/${IMAGE_TAG}/g" stacks/docker-compose.template.yaml > docker-compose.yaml
+        sed "s/\${IMAGE_TAG}/${IMAGE_TAG}/g" docker-compose.template.yaml > docker-compose.yaml
 
     - name: Deploy to Docker Swarm
       env:
         DOCKER_HOST: tcp://34.128.107.69:2377
       run: |
-        docker stack deploy -c stacks/docker-compose.yaml be-zero
+        docker stack deploy -c docker-compose.yaml be-zero
 
